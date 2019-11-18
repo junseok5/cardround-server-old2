@@ -2,6 +2,7 @@ import cors from "cors"
 import express, { Express } from "express"
 import helmet from "helmet"
 import logger from "morgan"
+import api from "./api"
 
 class App {
     public app: Express = express()
@@ -14,7 +15,7 @@ class App {
         this.app.use(cors())
         this.app.use(logger("dev"))
         this.app.use(helmet())
-        console.log("middleware running")
+        this.app.use("/api", api)
     }
 }
 
